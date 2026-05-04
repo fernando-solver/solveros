@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comecar aqui — Solver Filesystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f2ea;
+    --paper-deep: #ece6d4;
+    --ink: #1a1510;
+    --ink-soft: #6b5d4f;
+    --ink-faint: #a89a85;
+    --rule: #d4c9b8;
+    --accent: #c45a2f;
+    --accent-deep: #8a3c1c;
+    --accent-soft: rgba(196, 90, 47, 0.12);
+    --warn: #b08420;
+    --warn-soft: rgba(176, 132, 32, 0.12);
+    --display: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Menlo', 'Consolas', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.65;
+    font-feature-settings: "tnum" 1, "ss01" 1;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 15% 10%, rgba(196,90,47,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 88% 92%, rgba(26,21,16,0.04) 0%, transparent 60%),
+      var(--paper);
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 48px 96px;
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead {
+    border-top: 3px double var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 22px 0 18px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 28px;
+  }
+  .brand {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  }
+  .brand em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .masthead-middle {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+    line-height: 1.6;
+  }
+  .masthead-middle .sep { color: var(--ink-faint); display: block; margin: 2px 0; }
+  .masthead-right {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.6;
+  }
+  .masthead-right strong { color: var(--ink); font-weight: 600; font-size: 11px; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    text-align: left;
+    margin-bottom: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-variation-settings: 'opsz' 144;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .hero-lede {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 620px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ---------- PREFLIGHT NOTE ---------- */
+  .preflight {
+    margin-bottom: 56px;
+    padding: 24px 28px;
+    border-left: 2px solid var(--accent);
+    background: var(--accent-soft);
+  }
+  .preflight-kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .preflight-text {
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .preflight ol {
+    list-style: none;
+    counter-reset: pf;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .preflight ol li {
+    counter-increment: pf;
+    padding-left: 28px;
+    position: relative;
+    margin-top: 6px;
+  }
+  .preflight ol li::before {
+    content: counter(pf, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .preflight ol li strong { color: var(--ink); }
+  .preflight a { color: var(--accent-deep); border-bottom: 1px solid currentColor; }
+  .preflight a:hover { color: var(--ink); }
+  .preflight-foot {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- STEP ---------- */
+  .step {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 28px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .step-num-col {
+    text-align: right;
+    padding-top: 4px;
+  }
+  .step-num {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--accent);
+    font-style: italic;
+    letter-spacing: -0.03em;
+    font-variation-settings: 'opsz' 144;
+  }
+  .step-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    display: block;
+  }
+  .step-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    font-variation-settings: 'opsz' 144;
+  }
+  .step-body {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .step-body p { margin-bottom: 10px; }
+  .step-body p.serif {
+    font-family: var(--display);
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .step-body ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .step-body ul li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .step-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+  }
+  .step-body code {
+    font-family: var(--mono);
+    background: var(--paper-deep);
+    color: var(--ink);
+    padding: 2px 7px;
+    font-size: 12px;
+  }
+  .step-body a { color: var(--accent-deep); border-bottom: 1px solid currentColor; }
+  .step-body a:hover { color: var(--ink); }
+
+  /* Step highlight (spotlight step) */
+  .step.spotlight {
+    background: linear-gradient(
+      to right,
+      var(--accent-soft) 0%,
+      transparent 80%
+    );
+    border: none;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding: 36px 24px 36px 0;
+    margin: 16px 0;
+  }
+  .step.spotlight .step-num { color: var(--ink); }
+  .step.spotlight .step-label { color: var(--accent); font-weight: 600; }
+
+  /* Warn block */
+  .warn {
+    margin: 16px 0;
+    padding: 14px 18px;
+    border-left: 2px solid var(--warn);
+    background: var(--warn-soft);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .warn strong {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warn);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* OS tabs */
+  .os-tabs {
+    display: flex;
+    gap: 0;
+    margin: 16px 0 10px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .os-tab {
+    padding: 10px 18px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    transition: all 0.15s;
+    margin-bottom: -1px;
+  }
+  .os-tab:hover { color: var(--ink); }
+  .os-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+  }
+  .os-content { display: none; padding: 16px 0 4px; }
+  .os-content.active { display: block; }
+  .os-content code {
+    display: block;
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: var(--ink);
+    color: var(--paper);
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Copy box (a frase magica) */
+  .copy-box {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0;
+    margin: 16px 0;
+    border: 1px solid var(--ink);
+  }
+  .copy-box span {
+    padding: 16px 20px;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink);
+    word-break: break-all;
+    background: var(--paper);
+  }
+  .copy-btn {
+    padding: 0 24px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+  .copy-btn:hover { background: var(--accent-deep); }
+  .copy-btn.copied { background: var(--accent); }
+
+  /* Details/collapsibles (editorial style) */
+  details {
+    margin: 16px 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  details:last-of-type { border-bottom: 1px solid var(--rule); }
+  details summary {
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 18px 0;
+    list-style: none;
+    position: relative;
+    padding-left: 30px;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--accent);
+    transition: transform 0.2s;
+    font-weight: 400;
+  }
+  details[open] summary::before { content: '—'; font-size: 14px; top: 22px; }
+  details[open] summary { color: var(--accent); }
+  details > *:not(summary) {
+    padding: 0 0 20px 30px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  details p { margin: 4px 0; }
+  details p strong {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    font-variation-settings: 'opsz' 144;
+  }
+  details a { color: var(--accent-deep); border-bottom: 1px solid currentColor; }
+  details code { background: var(--paper-deep); padding: 1px 6px; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 3px double var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  footer a { color: var(--accent-deep); border-bottom: 1px solid currentColor; text-transform: none; letter-spacing: 0; }
+  footer a:hover { color: var(--ink); }
+  footer .right { text-align: right; color: var(--ink-faint); }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .wrap { padding: 48px 24px 64px; }
+    .masthead { grid-template-columns: 1fr; gap: 12px; text-align: left; }
+    .masthead-middle, .masthead-right { text-align: left; }
+    .brand { font-size: 30px; }
+    .hero h1 { font-size: 38px; }
+    .step { grid-template-columns: 1fr; gap: 12px; }
+    .step-num-col { text-align: left; }
+    .step-num { font-size: 42px; }
+    .copy-box { grid-template-columns: 1fr; }
+    .copy-box span { font-size: 16px; }
+    footer { grid-template-columns: 1fr; }
+    footer .right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="brand">pmo<em>/</em><br>solver</div>
+    <div class="masthead-middle">
+      Guia de instalacao
+      <span class="sep">— § —</span>
+      Workspace com memoria persistente
+    </div>
+    <div class="masthead-right">
+      <strong>Kit v0.3 beta</strong><br>
+      abril 2026
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-kicker">Comecar aqui</div>
+    <h1>Um workspace<br>com <em>memoria</em>,<br>em 5 minutos.</h1>
+    <p class="hero-lede">
+      Voce vai instalar o Solver Filesystem e deixar seu agente reconhecer voce, seus projetos, e o que voce estava fazendo ontem — sem precisar explicar de novo.
+    </p>
+  </section>
+
+  <!-- PREFLIGHT -->
+  <div class="preflight">
+    <div class="preflight-kicker">Nota editorial · pre-requisitos</div>
+    <p class="preflight-text">
+      Duas coisas precisam estar instaladas antes de comecar.
+    </p>
+    <ol>
+      <li><strong>Python 3.10</strong> ou mais novo. <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">baixar aqui</a>. No Windows, marque a caixinha <em>"Add python.exe to PATH"</em>.</li>
+      <li><strong>Claude Code</strong>. <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener">baixar aqui</a>.</li>
+    </ol>
+    <p class="preflight-foot">Ja tem ambos? Siga. Faltou um? Instale e volte.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-num-col">
+      <div class="step-num">01</div>
+      <span class="step-label">Extrair</span>
+    </div>
+    <div>
+      <h2 class="step-title">Coloque o kit numa pasta</h2>
+      <div class="step-body">
+        <p class="serif">Voce recebeu um arquivo .zip. Extraia em uma pasta onde o workspace vai viver — Desktop ou Documentos servem bem.</p>
+        <div class="warn">
+          <strong>Evite</strong>
+          Extrair dentro de OneDrive, Google Drive, iCloud ou Dropbox. A sincronizacao corrompe o banco SQLite.
+        </div>
+        <p>Bom exemplo: <code>C:\Users\SeuNome\Desktop\meu-workspace</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-num-col">
+      <div class="step-num">02</div>
+      <span class="step-label">Abrir</span>
+    </div>
+    <div>
+      <h2 class="step-title">Abra o Claude Code na pasta</h2>
+      <div class="step-body">
+        <p>Escolha seu sistema:</p>
+        <div class="os-tabs" role="tablist">
+          <button class="os-tab active" data-os="win">Windows</button>
+          <button class="os-tab" data-os="mac">macOS</button>
+          <button class="os-tab" data-os="linux">Linux</button>
+        </div>
+        <div class="os-content active" data-os="win">
+          <p>Clique com o <strong>botao direito</strong> na pasta do workspace:</p>
+          <ul>
+            <li>Windows 11 &rarr; <strong>"Abrir no Terminal"</strong></li>
+            <li>Windows 10 &rarr; <strong>"Abrir janela do PowerShell aqui"</strong> (Shift + clique direito)</li>
+          </ul>
+          <p>No terminal, digite:</p>
+          <code>claude</code>
+        </div>
+        <div class="os-content" data-os="mac">
+          <p>Abra o Terminal (Cmd+Space &rarr; "Terminal"). Navegue ate a pasta e abra o Claude Code:</p>
+          <code>cd ~/Desktop/meu-workspace
+claude</code>
+        </div>
+        <div class="os-content" data-os="linux">
+          <p>Abra o terminal dentro da pasta (pelo file manager ou manualmente) e digite:</p>
+          <code>claude</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-num-col">
+      <div class="step-num">03</div>
+      <span class="step-label">Invocar</span>
+    </div>
+    <div>
+      <h2 class="step-title">Cole a frase magica</h2>
+      <div class="step-body">
+        <p>No Claude Code que acabou de abrir, copie e cole:</p>
+        <div class="copy-box">
+          <span>configure este workspace</span>
+          <button class="copy-btn" id="copyBtn">Copiar</button>
+        </div>
+        <p>O agente detecta que o workspace e novo e inicia a configuracao assistida.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-num-col">
+      <div class="step-num">04</div>
+      <span class="step-label">Responder</span>
+    </div>
+    <div>
+      <h2 class="step-title">Quatro perguntas, dois minutos</h2>
+      <div class="step-body">
+        <p>O agente vai perguntar:</p>
+        <ul>
+          <li>Como voce se chama</li>
+          <li>Que nome quer dar para o agente</li>
+          <li>Qual o papel desse agente</li>
+          <li>Qual sua area de trabalho</li>
+        </ul>
+        <p class="serif">No fim, ele pergunta se voce quer criar o primeiro projeto. Diga sim — e o jeito mais rapido de sentir o valor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPOTLIGHT -->
+  <div class="step spotlight">
+    <div class="step-num-col">
+      <div class="step-num">&rsaquo;</div>
+      <span class="step-label">Dia a dia</span>
+    </div>
+    <div>
+      <h2 class="step-title">Comandos depois da configuracao</h2>
+      <div class="step-body">
+        <ul>
+          <li><code>/nova-pasta</code> &mdash; cria um projeto novo com a estrutura padrao</li>
+          <li><code>/compartilhar X</code> &mdash; exporta projeto em ZIP curado (scrub de senhas, HANDOFF.md)</li>
+          <li><code>/dashboard</code> &mdash; retrato visual do workspace (calendario, horas, objetivos)</li>
+          <li><code>/fechar-dia</code> &mdash; consolida atividades do dia no DIARIO.md</li>
+          <li><code>/status</code> &mdash; panorama rapido</li>
+        </ul>
+        <p class="serif">Voce nao precisa decorar. Tambem funciona em linguagem natural: <em>"compartilha esse projeto com o Pedro", "me da um panorama"</em>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILS -->
+  <details>
+    <summary>Problemas comuns</summary>
+    <div>
+      <p><strong>O Claude Code nao abre.</strong> Confirme que instalou em <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener">claude.com/product/claude-code</a>.</p>
+      <p><strong>Diz que Python nao foi encontrado.</strong> Python nao esta no PATH. No Windows, reinstale marcando "Add python.exe to PATH", feche e abra tudo de novo.</p>
+      <p><strong>O agente nao entendeu a frase.</strong> Digite manualmente: <code>/setup</code></p>
+      <p><strong>Extrai errado e os arquivos ficaram soltos.</strong> Extraia de novo garantindo que fiquem em UMA pasta (CLAUDE.md, pmo_db.py, README.md todos juntos na raiz).</p>
+      <p><strong>Outro problema?</strong> Acesse <a href="https://fernandosolver.com.br" target="_blank" rel="noopener">fernandosolver.com.br</a> para suporte e documentacao.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Prefere instalar via terminal</summary>
+    <div>
+      <p>Abra o terminal dentro da pasta do kit e rode:</p>
+      <p><code>python instalar.py "/caminho/do/seu/workspace"</code></p>
+      <p>Ou leia o <strong>README.md</strong> para arquitetura completa.</p>
+    </div>
+  </details>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      Solver Filesystem · log e autoridade<br>
+      <a href="https://fernandosolver.com.br" target="_blank" rel="noopener">fernandosolver.com.br</a>
+    </div>
+    <div class="right">
+      Fraunces · JetBrains Mono<br>
+      Paleta creme/tinta · acento terracota
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // OS detect
+  (function() {
+    var ua = navigator.userAgent;
+    var target = 'win';
+    if (/Mac|iPhone|iPad/i.test(ua)) target = 'mac';
+    else if (/Linux/i.test(ua)) target = 'linux';
+    document.querySelectorAll('.os-tab').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.os === target);
+    });
+    document.querySelectorAll('.os-content').forEach(function(c) {
+      c.classList.toggle('active', c.dataset.os === target);
+    });
+  })();
+
+  // Tab switcher
+  document.querySelectorAll('.os-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var os = btn.dataset.os;
+      document.querySelectorAll('.os-tab').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.os === os);
+      });
+      document.querySelectorAll('.os-content').forEach(function(c) {
+        c.classList.toggle('active', c.dataset.os === os);
+      });
+    });
+  });
+
+  // Copy
+  var copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener('click', function() {
+    var text = 'configure este workspace';
+    var done = function() {
+      copyBtn.textContent = 'Copiado';
+      copyBtn.classList.add('copied');
+      setTimeout(function() {
+        copyBtn.textContent = 'Copiar';
+        copyBtn.classList.remove('copied');
+      }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function() {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch(e){}
+        document.body.removeChild(ta);
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+</script>
+</body>
+</html>

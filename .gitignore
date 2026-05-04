@@ -1,0 +1,80 @@
+# Solver Filesystem — .gitignore
+
+# Banco SQLite gerado pelo workspace ao usar
+pmo.db
+pmo.db-journal
+pmo.db-wal
+pmo.db-shm
+
+# Dashboard HTML gerado por /dashboard
+dashboard.html
+dashboard-*.html
+
+# Pastas de projetos criadas pelo /nova-pasta (workspace de uso, nao do kit)
+20[0-9][0-9][0-1][0-9]_*/
+
+# Compartilhamentos gerados por /compartilhar
+shared/
+*_handoff_*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Claude Code (workspace local)
+.claude/settings.local.json
+.claude/projects/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Arquivos de configuracao local de instancia
+*.local.md
+*.local.json
+.env
+.env.local
+secrets.*
+credentials.*
+*.key
+*.pem

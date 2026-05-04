@@ -1,0 +1,48 @@
+# Solverkitty Core
+stack: core
+versao: 0.6
+descricao: Núcleo genérico do Solverkitty. Estrutura mínima sem opinião
+  sobre setor ou tamanho. Serve qualquer pessoa — você customiza por cima
+  pra projetos pessoais, profissionais, estudos ou negócio próprio.
+
+estrutura_minima:
+  - inbox/
+  - saidas/
+  - _archive/
+  - CLAUDE.md
+  - objetivos.md
+
+deptos: []  # nenhum por default; o usuário ou um stack especializado adiciona
+
+modulos_python_core:
+  - pmo_db.py
+  - pmo_setup.py
+  - pmo_index.py
+  - pmo_historico.py
+  - pmo_stacks.py
+  - pmo_dashboard.py
+  - pmo_preflight.py
+  - pmo_share.py
+  - pmo_hooks/session_start.py
+
+commands_core:
+  - comecar           # ponto de entrada (apresentação + setup-pessoal)
+  - setup-pessoal     # cadastro inicial: você + agente + áreas + objetivo
+  - proximo-passo    # sugere a próxima ação alinhada ao objetivo principal
+  - instalar-stack   # instala stacks especializados (futuros)
+
+agents_core: []
+  # nenhum por default; stacks especializados ou customização do dono fornecem
+
+skills_core:
+  - skill_compartilhar-projeto
+  - skill_find-skill-local
+  - skill_ver-dashboard
+  - skill_ogilvy-copywriting
+  - skill_exemplo_01_analisar-planilha-excel
+  - skill_exemplo_02_resumo-executivo
+  - skill_pessoal_01_organizar-leitura
+  - skill_pessoal_02_revisar-semana
+  - skill_pessoal_03_resumo-projeto
+  - skill_pessoal_04_arquivar-pasta
+  - skill_pessoal_05_visao-mes

@@ -1,0 +1,153 @@
+================================================================
+  SOLVERKITTY — COMECAR AQUI
+  v0.6 — maio 2026
+================================================================
+
+Voce baixou o kit. Em uns 5 minutos voce tem um workspace de
+trabalho com memoria rodando. Zero terminal necessario.
+
+----------------------------------------------------------------
+  PRE-REQUISITOS (verifique antes de comecar)
+----------------------------------------------------------------
+
+Voce precisa de duas coisas instaladas:
+
+  1. PYTHON 3.10 ou mais novo
+     Baixar: https://www.python.org/downloads/
+     Windows: marcar "Add python.exe to PATH" durante a instalacao.
+
+  2. CLAUDE CODE
+     Baixar: https://claude.com/product/claude-code
+
+Se voce ja tem os dois, pode continuar. Se faltar algum, instale
+primeiro e volte aqui.
+
+----------------------------------------------------------------
+  PASSO 1 — EXTRAIR
+----------------------------------------------------------------
+
+Voce baixou um arquivo .zip.
+
+Extraia em uma pasta onde voce quer que seu workspace viva.
+Recomendacao: Desktop ou Documentos.
+
+NAO coloque dentro de OneDrive, Google Drive, iCloud ou Dropbox.
+O banco SQLite pode corromper com sincronizacao.
+
+Exemplo bom: C:\Users\SeuNome\Desktop\meu-workspace
+Exemplo ruim: C:\Users\SeuNome\OneDrive\meu-workspace
+
+----------------------------------------------------------------
+  PASSO 2 — ABRIR O CLAUDE CODE NESSA PASTA
+----------------------------------------------------------------
+
+WINDOWS:
+  Opcao A — Abra o Prompt de Comando (cmd), digite:
+    cd "C:\Users\SeuNome\Desktop\meu-workspace"
+    claude
+
+  Opcao B — Clique com o botao direito na pasta,
+  escolha "Abrir no Terminal" (Windows 11) ou
+  "Abrir janela do PowerShell aqui" e digite:
+    claude
+
+MAC:
+  Abra o Terminal, digite:
+    cd ~/Desktop/meu-workspace
+    claude
+
+LINUX:
+  Abra o terminal na pasta, digite:
+    claude
+
+Em qualquer caso: o Claude Code vai iniciar ja dentro do seu
+workspace novinho.
+
+----------------------------------------------------------------
+  PASSO 3 — DIGITAR A FRASE MAGICA
+----------------------------------------------------------------
+
+No prompt do Claude Code, digite exatamente:
+
+  configure este workspace
+
+O agente vai detectar que o workspace esta novo e iniciar o
+processo de configuracao assistida. Ele vai:
+
+  1. Verificar silenciosamente se tudo esta instalado
+  2. Se faltar algo, te avisar de forma amigavel
+  3. Perguntar seu nome, o nome do agente, o papel dele e sua area
+  4. Configurar tudo — voce nao digita nenhum comando
+
+----------------------------------------------------------------
+  PASSO 4 — SEGUIR A CONVERSA
+----------------------------------------------------------------
+
+O agente vai conversar com voce fazendo perguntas simples:
+
+  - "Como voce se chama?"
+  - "Que nome quer dar para o seu agente?"
+  - "Qual o papel desse agente?"
+  - "Qual sua area de trabalho?"
+
+Responda cada uma. Leva uns 2 minutos.
+
+No final, o agente pergunta se voce quer criar seu primeiro
+projeto. Pode dizer sim — e o jeito mais rapido de entender o
+valor do metodo.
+
+----------------------------------------------------------------
+  PROBLEMAS COMUNS
+----------------------------------------------------------------
+
+"o claude nao roda" → verifique se instalou o Claude Code.
+
+"diz que python nao foi encontrado" → Python nao esta no PATH.
+No Windows, reinstale o Python marcando "Add to PATH".
+
+"o claude nao entende a frase 'configure este workspace'" →
+digite manualmente: /comecar
+
+"extrai o zip errado e os arquivos ficaram soltos" → extraia
+de novo garantindo que todos os arquivos fiquem em UMA pasta
+(com os arquivos CLAUDE.md, pmo_db.py, README.md, etc todos
+juntos na raiz).
+
+"ja tentei e deu erro" → acesse fernandosolver.com.br
+para suporte e documentacao.
+
+----------------------------------------------------------------
+  DEPOIS QUE CONFIGURAR — COMANDOS QUE VOCE VAI USAR
+----------------------------------------------------------------
+
+Dentro do Claude Code, depois do setup, voce pode pedir:
+
+  "/nova-pasta"           criar um projeto novo
+  "/compartilhar X"       exportar projeto X para enviar a colega
+                          (gera ZIP curado com scrub de credenciais)
+  "/dashboard"            gerar retrato visual do seu trabalho
+                          (HTML com KPIs, heatmap, temas, objetivos)
+  "/fechar-dia"           consolidar atividades no DIARIO.md
+  "/status"               ver estado atual do workspace
+
+----------------------------------------------------------------
+  O QUE LER DEPOIS
+----------------------------------------------------------------
+
+Quando estiver usando:
+
+  guia-filesystem.md   — a parte didatica (20 min de leitura)
+  playbook.md          — referencia tecnica
+  README.md            — documentacao detalhada
+  skills/README.md     — catalogo de skills
+
+----------------------------------------------------------------
+  BEM-VINDO AO BETA
+----------------------------------------------------------------
+
+Voce esta entre os primeiros testando. Seu feedback nao e
+opcional — e parte do acordo. Qualquer coisa confusa, travada
+ou com ideia de melhoria: registre em fernandosolver.com.br.
+
+Boa descoberta.
+— Fernando Solver  (fernandosolver.com.br)
