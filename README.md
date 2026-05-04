@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="assets/solverkitty.png" alt="Solverkitty" width="180" />
-
-# Solverkitty
+<img src="assets/solverkitty.png" alt="Solverkitty" width="520" />
 
 > **Crie um agente. Em uma pasta. Em menos de 1 minuto.**
 
@@ -117,6 +115,8 @@ MIT — use, modifique, distribua. Cite a fonte se publicar derivado.
 
 <div align="center">
 
-*Feito por [Fernando Solver](https://fernandosolver.com.br) e o gato Jorge.*
+*Construído por [Fernando Solver](https://fernandosolver.com.br) em colaboração contínua com [Claude](https://claude.com) (Anthropic).*
+
+*O gato Jorge inspirou o mascote.*
 
 </div>
