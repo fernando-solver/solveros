@@ -33,6 +33,9 @@ Formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e este
 
 - README structure: added thesis section, personas table, architecture diagram (Mermaid), use cases inline, comparison table with alternatives, FAQ short version
 - `.gitignore` header updated from "Solver Filesystem" to "Solverkitty"
+- Added Portuguese-to-English translation guide for all commands and skills in README
+- Documented in `docs/PHILOSOPHY.md` why commands are in Portuguese (authenticity + planned i18n in v0.7)
+- Added v0.7 i18n milestone to roadmap (multi-language support planned)
 
 ---
 

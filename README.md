@@ -200,6 +200,42 @@ You can — and should — use multiple of these together.
 
 ## What's included in Core (v0.6)
 
+> 🇧🇷 **A quick note on naming.** Commands and skills are in Brazilian Portuguese — Solverkitty was built by a Brazilian operator (Fernando Solver) who uses these names every day in his own work. **You don't need to speak Portuguese to use Solverkitty** — they're just names. A translation table is right below. Multi-language support (renaming everything to English, Spanish, etc.) is planned for **v0.7** — see [Roadmap](#roadmap).
+
+### Translation guide (Portuguese → English)
+
+| Command | What it does |
+|---------|--------------|
+| `/comecar` | *start* — first-time greeting + onboarding |
+| `/setup-pessoal` | *personal setup* — you + agent + areas + main objective |
+| `/proximo-passo` | *next step* — one concrete action aligned with your objective |
+| `/nova-pasta` | *new folder* — creates a canonical project folder |
+| `/dashboard` | (same word) — generates visual portrait of your work |
+| `/compartilhar` | *share* — exports a project with credential scrubbing |
+| `/fechar-dia` | *close the day* — consolidates day's activity into the diary |
+| `/instalar-stack` | *install stack* — installs specialized stacks |
+| `/status` | (same word) — current workspace status |
+
+| Skill | What it does |
+|-------|--------------|
+| `organizar-leitura` | *organize reading* — indexes a folder of PDFs by topic |
+| `revisar-semana` | *weekly review* — last 7 days of activity |
+| `resumo-projeto` | *project summary* — current state + next steps |
+| `arquivar-pasta` | *archive folder* — preserves history |
+| `visao-mes` | *month view* — consolidated monthly HTML |
+| `compartilhar-projeto` | *share project* — export with credential scrubbing |
+| `find-skill-local` | (English already) — discovers installed skills |
+| `ver-dashboard` | *view dashboard* — opens the dashboard |
+| `ogilvy-copywriting` | (English already) — assists with editorial copy |
+| `analisar-planilha-excel` | *analyze excel spreadsheet* — exploratory analysis |
+| `resumo-executivo` | *executive summary* — TL;DR + bullets + actions |
+
+> 💡 **Want them in English right now?** Slash commands are just `.md` files in `.claude/commands/`. Skills are `.md` files in `skills/`. Rename them locally — takes 30 seconds, doesn't affect anything else. Or wait for the **v0.7 i18n release** (planned).
+
+---
+
+### Full list
+
 **Commands** (slash commands inside Claude Code):
 - `/comecar` — first-time greeting + onboarding (5 minutes)
 - `/setup-pessoal` — initial setup: you + agent + areas + main objective
@@ -240,6 +276,7 @@ You can — and should — use multiple of these together.
 ## Roadmap
 
 - ✅ **v0.6 — Core for individuals** (current)
+- 🌐 **v0.7 — i18n / multi-language** (planned) — commands and skills available in English, Spanish, and others alongside Portuguese
 - 🛠️ **Stack Empresa** — generic enterprise PMO (in development)
 - 🎯 **Stack Ecommerce** — Brazilian e-commerce operators
 - 🎯 **Stack Consultor / Mentor / Educator** — knowledge sellers

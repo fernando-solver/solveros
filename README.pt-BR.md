@@ -240,6 +240,7 @@ Você pode — e deveria — usar várias delas juntas.
 ## Roadmap
 
 - ✅ **v0.6 — Core pra pessoas** (atual)
+- 🌐 **v0.7 — i18n / multi-idioma** (planejado) — comandos e skills em EN/ES além de PT
 - 🛠️ **Stack Empresa** — PMO empresarial genérico (em desenvolvimento)
 - 🎯 **Stack Ecommerce** — lojista BR
 - 🎯 **Stack Consultor / Mentor / Educador** — quem vende conhecimento

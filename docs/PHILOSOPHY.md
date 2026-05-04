@@ -203,6 +203,26 @@ If you're building agent infrastructure, study these too.
 
 ---
 
+## Why are commands in Portuguese?
+
+This is asked enough to deserve an answer in the philosophy doc.
+
+Solverkitty was built by a Brazilian operator (Fernando Solver) over 90+ days of running Claude Code on his own work. The commands and skills carry the names he naturally uses — `/comecar` instead of `/start`, `revisar-semana` instead of `weekly-review`.
+
+Three reasons we kept it that way:
+
+1. **Authenticity.** This isn't a product designed for a market — it's a system that grew from real use. Renaming everything to English would be retrofitting a different identity over a working tool.
+
+2. **Names are surface, not substance.** Slash commands and skills are just markdown files. Anyone can rename them in 30 seconds without touching the engine. The value isn't in the words; it's in the system.
+
+3. **Better to commit honestly than to compromise weakly.** A half-translated product (some commands EN, some PT) would be worse than either pure option. So we picked one — and made the other trivially achievable for anyone who wants it.
+
+That said: **multi-language support is planned for v0.7** — first-class English, Spanish, and other locale stacks where every command, skill, and message is available natively in your language. Until then, the names are Portuguese, and you have a translation table in the README.
+
+If you can read this paragraph, you can use Solverkitty. The Portuguese is decoration.
+
+---
+
 ## Where this goes next
 
 Solverkitty Core is the foundation. The future is **stacks** — domain-specific extensions that build on top:
