@@ -2,8 +2,6 @@
 
 <img src="assets/solverkitty.png" alt="Solverkitty" width="520" />
 
-> **Crie um agente. Em uma pasta. Em menos de 1 minuto.**
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Versão](https://img.shields.io/badge/versão-0.6-blue.svg)](CHANGELOG.md)
 [![Made for Claude Code](https://img.shields.io/badge/Made%20for-Claude%20Code-purple.svg)](https://claude.com/product/claude-code)
