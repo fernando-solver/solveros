@@ -6,6 +6,36 @@ Formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e este
 
 ---
 
+## [0.6.1] — 2026-05-03
+
+**Visibility overhaul.** Documentation, community files, and project meta artifacts.
+
+### Added
+
+- **README.md in English** as the primary version
+- **README.pt-BR.md** as Brazilian Portuguese translation, linked at top
+- **docs/PHILOSOPHY.md** — full thesis on context + environment as the two pillars of agentic systems
+- **docs/ARCHITECTURE.md** — deep technical dive into every component (filesystem layout, SQLite schema, hooks, skills, stacks, slash commands)
+- **docs/USE_CASES.md** — 6 detailed use case patterns (founder, consultant, researcher, knowledge worker, student, small business)
+- **CONTRIBUTING.md** — contribution guidelines, PR process, code style
+- **CODE_OF_CONDUCT.md** — Contributor Covenant 2.1
+- **SECURITY.md** — vulnerability disclosure policy
+- **AUTHORS.md** — contributor recognition (Fernando + Claude + Jorge)
+- **SHOWCASE.md** — gallery of users (with template for new entries)
+- **.github/ISSUE_TEMPLATE/** — bug report, feature request, use case templates
+- **.github/PULL_REQUEST_TEMPLATE.md**
+- **.github/FUNDING.yml**
+- **.github/workflows/ci.yml** — automated Python syntax + smoke tests on every push/PR
+- **assets/social-preview.html** — generates 1280x640 preview image for GitHub social card
+- Co-authored commits with Claude (Anthropic) credit
+
+### Changed
+
+- README structure: added thesis section, personas table, architecture diagram (Mermaid), use cases inline, comparison table with alternatives, FAQ short version
+- `.gitignore` header updated from "Solver Filesystem" to "Solverkitty"
+
+---
+
 ## [0.6.0] — 2026-05-03
 
 **Reposicionamento: Solverkitty pra pessoas.**

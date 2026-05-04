@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solverkitty — Social Preview (1280x640)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .canvas {
+      width: 1280px;
+      height: 640px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 60%, #1a0a0f 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    /* Subtle grid background */
+    .canvas::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* Glow accent */
+    .canvas::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 90, 30, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      width: 720px;
+      height: auto;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+    }
+
+    .tagline {
+      color: #fff;
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .subline {
+      color: #a0a0b0;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 60px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      color: #606070;
+      z-index: 2;
+    }
+
+    .footer .repo {
+      color: #ff5a1e;
+      font-weight: 700;
+    }
+
+    .footer .badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+      font-size: 13px;
+      color: #a0a0b0;
+    }
+
+    /* Instructions outside the canvas */
+    .instructions {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #fff;
+      color: #000;
+      padding: 16px 20px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      max-width: 320px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      z-index: 100;
+    }
+
+    .instructions h3 {
+      margin: 0 0 8px 0;
+      font-size: 15px;
+      color: #ff5a1e;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    @media print {
+      body { background: transparent; }
+      .instructions { display: none; }
+      .canvas { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="instructions">
+    <h3>Social preview — 1280×640</h3>
+    <ol>
+      <li>Open this file in Chrome</li>
+      <li>Right-click the dark canvas → <b>"Inspect"</b></li>
+      <li>Right-click <code>&lt;div class="canvas"&gt;</code> in DevTools → <b>"Capture node screenshot"</b></li>
+      <li>Save as PNG</li>
+      <li>Upload at: github.com/fernando-solver/solverkitty/settings → "Social preview"</li>
+    </ol>
+  </div>
+
+  <div class="canvas">
+    <img src="solverkitty.png" class="logo" alt="Solverkitty" />
+
+    <div class="tagline">
+      Build an agent. In a folder.<br>In under a minute.
+    </div>
+
+    <div class="subline">
+      Editorial filesystem for Claude Code · Open source, MIT
+    </div>
+
+    <div class="footer">
+      <div class="repo">github.com/fernando-solver/solverkitty</div>
+      <div class="badge">v0.6 · MIT · MADE FOR CLAUDE CODE</div>
+    </div>
+  </div>
+
+</body>
+</html>
