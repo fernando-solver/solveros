@@ -11,7 +11,7 @@ O que faz:
 1. Pergunta onde voce quer o workspace (ou aceita via argumento)
 2. Copia todos os arquivos do kit para la
 3. Inicializa o banco SQLite (pmo.db)
-4. Mostra proximo passo: abrir Claude Code na pasta e rodar /setup
+4. Mostra proximo passo: abrir Claude Code na pasta e rodar /comecar
 
 Este script NAO faz a configuracao inicial do agente (nome, papel, categorias).
 Essa parte e feita pelo proprio Claude Code via /setup, de forma conversada.
@@ -158,7 +158,7 @@ def print_next_steps(dest):
     print("     claude")
     print()
     print("  3. Dentro do Claude Code, digite:")
-    print("     /setup")
+    print("     /comecar")
     print()
     print("  O Claude Code vai conduzir uma conversa de 2 minutos para")
     print("  personalizar seu workspace (nome, agente, papel, categorias).")

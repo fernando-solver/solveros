@@ -13,6 +13,14 @@ dashboard-*.html
 # Pastas de projetos criadas pelo /nova-pasta (workspace de uso, nao do kit)
 20[0-9][0-9][0-1][0-9]_*/
 
+# Pastas de DEPARTAMENTO do usuario (_financeiro, _credito, ...) e tudo dentro
+/_*/
+
+# Indices, diarios e retomadas preenchidos pelo usuario (estado, nao kit)
+GLOSSARIO.md
+DIARIO.md
+proximos-passos.md
+
 # Compartilhamentos gerados por /compartilhar
 shared/
 *_handoff_*.zip

@@ -1,3 +1,0 @@
-# Diario de Atividades
-
----

@@ -62,8 +62,13 @@ etc). Em branco: usa `você` (default neutro).
 
 ### Aplica personalização
 
-Após coletar, atualize o `CLAUDE.md` raiz do workspace, na seção
-**## Identidade**, sobrescrevendo o bloco existente:
+Após coletar, **grave a identidade em `IDENTIDADE.local.md`** na raiz do
+workspace (use `Write`). **NÃO edite o `CLAUDE.md`** — ele é versionado, e a
+personalização precisa ficar fora do git pra o `git pull` nunca dar conflito.
+O `IDENTIDADE.local.md` é gitignored (`*.local.md`) e o hook de SessionStart
+injeta o conteúdo dele automaticamente no início de cada sessão.
+
+Conteúdo do `IDENTIDADE.local.md`:
 
 ```markdown
 ## Identidade
@@ -75,11 +80,10 @@ Tom: adaptativo — calibre conforme contexto. Conversas casuais
 podem ter charme; relatórios formais ficam neutros. Nunca force
 uma personalidade fixa.
 
-(Apelido aplicado via /comecar em <data>.)
+(Apelido definido via /comecar em <data>.)
 ```
 
-Use `Edit` tool ou `Write` (se for primeira vez). Confirme em
-terminal: `[OK] apelido salvo: <apelido>`.
+Confirme: `[OK] apelido salvo em IDENTIDADE.local.md: <apelido>`.
 
 ## Fase 3 — Setup do negócio (sempre, obrigatório)
 

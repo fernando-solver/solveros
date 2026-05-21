@@ -1,0 +1,13 @@
+# Normalizacao de quebras de linha — LF em todo o repo.
+# Evita churn de CRLF entre maquinas e mantem o `git pull` limpo no Windows.
+* text=auto eol=lf
+
+# Binarios (nunca normalizar)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.zip  binary
+*.pdf  binary

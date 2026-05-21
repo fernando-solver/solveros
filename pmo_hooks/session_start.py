@@ -22,10 +22,11 @@ def _print(*args, **kwargs):
 
 
 def _safe_session_start():
-    """Cria sessao no pmo.db. Retorna session_id ou None."""
+    """Garante schema e cria sessao no pmo.db. Retorna session_id ou None."""
     try:
         sys.path.insert(0, WORKSPACE)
-        from pmo_db import session_start
+        from pmo_db import init_db, session_start
+        init_db()  # idempotente: cria o schema num clone novo (primeira sessao)
         return session_start("auto via SessionStart hook")
     except Exception as e:
         _print(f"[SolverOS hook] session_start falhou: {e}", file=sys.stderr)
@@ -78,6 +79,22 @@ def _load_recent_activity():
         _print(f"[SolverOS hook] _load_recent_activity falhou: {e}", file=sys.stderr)
 
 
+def _load_identity():
+    """Injeta a personalizacao local do agente (IDENTIDADE.local.md), se existir.
+    Esse arquivo e gitignored (*.local.md) — assim a identidade do usuario
+    nunca entra em arquivo versionado e o `git pull` continua limpo."""
+    try:
+        path = os.path.join(WORKSPACE, "IDENTIDADE.local.md")
+        if os.path.isfile(path):
+            with open(path, encoding="utf-8") as f:
+                txt = f.read().strip()
+            if txt:
+                _print("\n## Identidade do agente")
+                _print(txt)
+    except Exception as e:
+        _print(f"[SolverOS hook] _load_identity falhou: {e}", file=sys.stderr)
+
+
 def main():
     try:
         sid = _safe_session_start()
@@ -87,6 +104,7 @@ def main():
             f"{datetime.now().strftime('%Y-%m-%d %H:%M')}"
         )
 
+        _load_identity()
         _load_objective()
         _load_recent_activity()
 

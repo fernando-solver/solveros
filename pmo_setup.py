@@ -388,8 +388,11 @@ Cada execute.md deve ser autossuficiente.
     upsert_project(folder_rel, descricao, 'Ativo', empresa=emp_slug, departamento=dep_slug)
     log_activity(hoje, folder_rel, 'feature', f'Projeto criado: {descricao}')
 
-    # Adiciona ao GLOSSARIO.md
+    # Adiciona ao GLOSSARIO.md (cria com header se nao existir — e local/gitignored)
     glossario_path = os.path.join(BASE_DIR, 'GLOSSARIO.md')
+    if not os.path.isfile(glossario_path):
+        with open(glossario_path, 'w', encoding='utf-8') as f:
+            f.write("# Glossario de projetos\n\n| Pasta | Descricao | Status |\n|-------|-----------|--------|\n")
     with open(glossario_path, 'r', encoding='utf-8') as f:
         glossario = f.read()
 
