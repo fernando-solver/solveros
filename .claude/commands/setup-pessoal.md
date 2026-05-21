@@ -100,8 +100,9 @@ Após salvar tudo, devolva exatamente:
 {{nome_usuario}}, você tem o agente {{nome_agente}} configurado pra
 organizar {{areas}}, focado em "{{objetivo_principal}}".
 
-Próximo passo: solte arquivos relevantes em qualquer pasta de área que
-acabei de criar, ou rode `/proximo-passo` quando quiser saber o que fazer agora.
+Próximo passo: solte arquivos relevantes na pasta `inbox` de cada área
+que acabei de criar (ex: `_financeiro/inbox/`) — eu classifico na próxima
+sessão. Ou rode `/proximo-passo` quando quiser saber o que fazer agora.
 ```
 
 Não liste mais nada. Não recapitule. A pessoa quer começar a trabalhar.
