@@ -21,7 +21,7 @@ assignees: ''
 - **OS:** <!-- Windows 11 / macOS 14 / Ubuntu 22.04 / etc -->
 - **Python version:** <!-- python --version -->
 - **Claude Code version:** <!-- claude --version -->
-- **Solverkitty version:** <!-- check CHANGELOG.md or git log -->
+- **SolverOS version:** <!-- check CHANGELOG.md or git log -->
 
 ## Logs / output
 

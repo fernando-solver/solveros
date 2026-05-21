@@ -26,12 +26,12 @@ Limita 60 caracteres.
 
 ## Pergunta 2 — agente
 
-> *Esse é o nome do seu agente. Pode ser próprio, de função, ou deixar como Solverkitty mesmo.*
+> *Esse é o nome do seu agente. Pode ser próprio, de função, ou deixar como SolverOS mesmo.*
 
 **Que nome quer dar pro seu agente?**
 
 Pergunta aberta, **sem sugerir nomes**. Deixe a pessoa escolher.
-Em branco ou "Solverkitty mesmo": mantém `Solverkitty`. Limita 30 caracteres.
+Em branco ou "SolverOS mesmo": mantém `SolverOS`. Limita 30 caracteres.
 
 → salva em `nome_agente`.
 

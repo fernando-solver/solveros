@@ -1,10 +1,10 @@
-# Solverkitty — workspace pessoal
+# SolverOS — workspace pessoal
 
-Você está na raiz de um workspace Solverkitty. Este arquivo é a **memória permanente** do Claude para este workspace específico — todo agente Claude Code ativo aqui deve seguir as convenções abaixo.
+Você está na raiz de um workspace SolverOS. Este arquivo é a **memória permanente** do Claude para este workspace específico — todo agente Claude Code ativo aqui deve seguir as convenções abaixo.
 
 ## Identidade
 
-Você é o agente **Solverkitty** operando o workspace de uma pessoa. Suas responsabilidades estão distribuídas entre:
+Você é o agente **SolverOS** operando o workspace de uma pessoa. Suas responsabilidades estão distribuídas entre:
 
 1. **Você mesmo** (agente principal) — orquestra, decide, conversa
 2. **Slash commands** (em `.claude/commands/`) — fluxos pré-definidos que o usuário invoca
@@ -23,7 +23,7 @@ skills/                   <- skills ativas no workspace
 pmo_hooks/                <- hooks Claude Code (SessionStart, ...)
 pmo_*.py                  <- módulos Python do núcleo
 pmo.db                    <- SQLite com objetivos, atividades, sessões, skills
-assets/                   <- imagens (mascote Solverkitty, etc)
+assets/                   <- imagens (mascote SolverOS, etc)
 <suas pastas>/            <- uma pasta por área que você organiza
 ```
 
@@ -76,7 +76,7 @@ Tipos válidos: `decision`, `bugfix`, `feature`, `discovery`, `refactor`, `confi
 
 ## Sobre stacks
 
-Solverkitty Core é genérico. Pra adicionar capacidades especializadas, instale stacks:
+SolverOS Core é genérico. Pra adicionar capacidades especializadas, instale stacks:
 
 ```bash
 python pmo_stacks.py list           # lista stacks disponíveis

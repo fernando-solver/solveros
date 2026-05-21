@@ -1,4 +1,4 @@
-"""pmo_stacks — gerencia stacks do Solverkitty.
+"""pmo_stacks — gerencia stacks do SolverOS.
 
 Um stack e um pacote nomeado em stacks/<nome>/ que contem:
 - _template/  estrutura de pasta de cliente que o stack cria

@@ -1,11 +1,11 @@
 # Authors & Contributors
 
-Solverkitty exists because of the people listed here.
+SolverOS exists because of the people listed here.
 
 ## Maintainer
 
 - **[Fernando Solver](https://fernandosolver.com.br)** — Author, lead maintainer, and product designer.
-  Built Solverkitty from 90+ days of operating Claude Code as a continuous work partner.
+  Built SolverOS from 90+ days of operating Claude Code as a continuous work partner.
   Contact: fernando@icarus.com.br
 
 ## Core collaborators
@@ -29,7 +29,7 @@ To contribute, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Acknowledgments
 
-Solverkitty was inspired by — and complements — these adjacent projects:
+SolverOS was inspired by — and complements — these adjacent projects:
 
 - **[claude-mem](https://github.com/...)** — for showing how memory layers can complement each other
 - **[Anthropic](https://anthropic.com)** — for building Claude Code, the substrate this all runs on

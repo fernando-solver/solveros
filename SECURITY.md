@@ -11,7 +11,7 @@ We support security fixes for the **latest minor version** only.
 
 ## Reporting a vulnerability
 
-If you find a security vulnerability in Solverkitty, **please do not open a public issue.**
+If you find a security vulnerability in SolverOS, **please do not open a public issue.**
 
 Instead, email: **fernando@icarus.com.br**
 
@@ -46,4 +46,4 @@ Include:
 
 Reporters of confirmed vulnerabilities will be credited in [AUTHORS.md](AUTHORS.md) and the relevant `CHANGELOG.md` entry, unless they prefer to remain anonymous.
 
-Thanks for keeping Solverkitty users safe.
+Thanks for keeping SolverOS users safe.

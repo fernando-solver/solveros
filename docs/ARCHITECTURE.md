@@ -1,4 +1,4 @@
-# Architecture — How Solverkitty works under the hood
+# Architecture — How SolverOS works under the hood
 
 This is the deep technical dive. For the high-level pitch, see the [README](../README.md). For the philosophy, see [PHILOSOPHY.md](PHILOSOPHY.md).
 
@@ -17,7 +17,7 @@ flowchart TB
         ClaudeMem[Claude Code memory<br/>~/.claude/]
     end
 
-    subgraph Solverkitty["Solverkitty workspace (context layer)"]
+    subgraph SolverOS["SolverOS workspace (context layer)"]
         CLAUDEmd[CLAUDE.md<br/>identity & rules]
         DB[(pmo.db<br/>SQLite log)]
         Skills[skills/<br/>procedures]
@@ -38,7 +38,7 @@ flowchart TB
     DB -->|provides facts| Hooks
 ```
 
-The **context layer** (Solverkitty) provides memory, structure, and procedures.
+The **context layer** (SolverOS) provides memory, structure, and procedures.
 The **environment layer** (Claude Code) provides execution, tool use, and conversation.
 The **agent** emerges from their interaction.
 
@@ -302,9 +302,9 @@ The skill is **executable specification**. The agent reads it and runs the proce
 
 ## Hooks — auto-loaded context
 
-Claude Code supports lifecycle hooks. Solverkitty uses one: `SessionStart`.
+Claude Code supports lifecycle hooks. SolverOS uses one: `SessionStart`.
 
-When you open Claude Code in a Solverkitty workspace, `pmo_hooks/session_start.py` runs automatically. It prints to stdout:
+When you open Claude Code in a SolverOS workspace, `pmo_hooks/session_start.py` runs automatically. It prints to stdout:
 
 - A session header with timestamp
 - The active main objective (if set) and progress
@@ -416,7 +416,7 @@ This is how `/comecar`, `/setup-pessoal`, `/proximo-passo`, etc. all work. They'
 
 ## How a typical session flows
 
-A real session in a Solverkitty workspace:
+A real session in a SolverOS workspace:
 
 1. **You open Claude Code** in your workspace folder.
 
@@ -446,23 +446,23 @@ This is the loop. It's mundane. It's also why nothing else feels right after.
 
 ## Performance characteristics
 
-- **Boot time of Claude Code in a Solverkitty workspace:** +0.3-1.5s vs vanilla (depends on hook execution time, capped at 8s by hook timeout)
+- **Boot time of Claude Code in a SolverOS workspace:** +0.3-1.5s vs vanilla (depends on hook execution time, capped at 8s by hook timeout)
 - **Memory footprint:** negligible (`pmo.db` typically < 5MB after a year of heavy use)
-- **Disk usage:** filesystem only — depends on what you store. Solverkitty itself is < 2MB.
+- **Disk usage:** filesystem only — depends on what you store. SolverOS itself is < 2MB.
 - **Network:** zero. Everything is local. The only network calls are what Claude Code makes to Anthropic.
 
 ---
 
 ## Trade-offs and limitations
 
-Solverkitty is opinionated. Some things it intentionally doesn't do:
+SolverOS is opinionated. Some things it intentionally doesn't do:
 
 - **Multi-user collaboration.** SQLite isn't meant for concurrent writes from multiple machines. For teams, each person has their own workspace and they sync via git.
 - **Real-time sync across devices.** Use git for that. Or Dropbox/iCloud (with caution — SQLite can corrupt under sync).
-- **Web UI.** Solverkitty is terminal + filesystem. The HTML dashboard is the closest thing to a UI.
+- **Web UI.** SolverOS is terminal + filesystem. The HTML dashboard is the closest thing to a UI.
 - **Mobile access.** The agent runs where Claude Code runs — currently desktop only.
 
-If any of these are blockers for you, Solverkitty isn't the right tool.
+If any of these are blockers for you, SolverOS isn't the right tool.
 
 ---
 

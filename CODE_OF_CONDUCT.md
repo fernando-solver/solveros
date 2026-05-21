@@ -2,7 +2,7 @@
 
 ## Our pledge
 
-We as members, contributors, and maintainers pledge to make participation in Solverkitty a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We as members, contributors, and maintainers pledge to make participation in SolverOS a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
@@ -27,7 +27,7 @@ Examples of unacceptable behavior:
 
 ## Scope
 
-This Code of Conduct applies within all community spaces — including issues, pull requests, discussions, code comments, and any external Solverkitty channels — and also applies when an individual is officially representing the community in public spaces.
+This Code of Conduct applies within all community spaces — including issues, pull requests, discussions, code comments, and any external SolverOS channels — and also applies when an individual is officially representing the community in public spaces.
 
 ## Enforcement
 

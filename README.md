@@ -6,7 +6,7 @@
 
 <div align="center">
 
-<img src="assets/solverkitty.png" alt="Solverkitty" width="520" />
+<img src="assets/solveros.png" alt="SolverOS" width="520" />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-0.6-blue.svg)](CHANGELOG.md)
@@ -19,9 +19,9 @@
 
 ---
 
-## What is Solverkitty?
+## What is SolverOS?
 
-Solverkitty is a kit of files and Python scripts that turns your Claude Code into a **continuous work partner**. You create the folder, install it, and your agent starts to:
+SolverOS is a kit of files and Python scripts that turns your Claude Code into a **continuous work partner**. You create the folder, install it, and your agent starts to:
 
 - **Remember what you do**, month after month (local SQLite — nothing leaves your machine)
 - **Organize your projects** automatically (editorial filesystem)
@@ -48,9 +48,9 @@ Without environment, it knows but can't execute.
 
 **Almost none ship context well.** They assume you'll handle context via prompt engineering or runtime injection.
 
-**Solverkitty is the opposite.** It doesn't give you new environment — Claude Code already does. It gives you the **context infrastructure**: editorial filesystem, auditable log, procedural skills, structured memory.
+**SolverOS is the opposite.** It doesn't give you new environment — Claude Code already does. It gives you the **context infrastructure**: editorial filesystem, auditable log, procedural skills, structured memory.
 
-> **Solverkitty is the filesystem that becomes context. Claude Code is the engine that becomes environment. Together, they become an agent.**
+> **SolverOS is the filesystem that becomes context. Claude Code is the engine that becomes environment. Together, they become an agent.**
 
 📖 *Want the full philosophy? See [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md).*
 
@@ -69,15 +69,15 @@ Anyone who works with their head and loses context between projects.
 | 🎓 **Student / learner** | Tracks reading lists, study progress, projects, builds personal knowledge base |
 | 🏪 **Small business owner** | Manages personal side of the business without mixing with company tools |
 
-If you've ever opened a project after 3 weeks and thought *"where was I?"* — Solverkitty is for you.
+If you've ever opened a project after 3 weeks and thought *"where was I?"* — SolverOS is for you.
 
 ---
 
 ## Quick start (1 minute)
 
 ```bash
-git clone https://github.com/fernando-solver/solverkitty.git
-cd solverkitty
+git clone https://github.com/fernando-solver/solveros.git
+cd solveros
 python instalar.py
 claude
 ```
@@ -176,9 +176,9 @@ Real things you can do today, copy-paste ready:
 
 ---
 
-## Solverkitty vs alternatives
+## SolverOS vs alternatives
 
-| | Vanilla Claude memory | claude-mem | LangChain / CrewAI | Notion / Obsidian | **Solverkitty** |
+| | Vanilla Claude memory | claude-mem | LangChain / CrewAI | Notion / Obsidian | **SolverOS** |
 |---|---|---|---|---|---|
 | **What it stores** | Your preferences | Conversation context | — (you build it) | Notes + databases | Projects, decisions, activities, objectives |
 | **Structured?** | No (free text) | No (conversation memory) | If you build it | Database-style | Yes (SQLite + canonical files) |
@@ -190,9 +190,9 @@ Real things you can do today, copy-paste ready:
 
 **The honest take:** these aren't competitors. They're different layers.
 
-- **claude-mem** keeps your conversation alive between sessions. Solverkitty keeps your *work* alive across months.
-- **LangChain/CrewAI** are for shipping agent products to others. Solverkitty is for running your own work.
-- **Notion/Obsidian** are passive notes. Solverkitty is an active system that executes procedures.
+- **claude-mem** keeps your conversation alive between sessions. SolverOS keeps your *work* alive across months.
+- **LangChain/CrewAI** are for shipping agent products to others. SolverOS is for running your own work.
+- **Notion/Obsidian** are passive notes. SolverOS is an active system that executes procedures.
 
 You can — and should — use multiple of these together.
 
@@ -200,7 +200,7 @@ You can — and should — use multiple of these together.
 
 ## What's included in Core (v0.6)
 
-> 🇧🇷 **A quick note on naming.** Commands and skills are in Brazilian Portuguese — Solverkitty was built by a Brazilian operator (Fernando Solver) who uses these names every day in his own work. **You don't need to speak Portuguese to use Solverkitty** — they're just names. A translation table is right below. Multi-language support (renaming everything to English, Spanish, etc.) is planned for **v0.7** — see [Roadmap](#roadmap).
+> 🇧🇷 **A quick note on naming.** Commands and skills are in Brazilian Portuguese — SolverOS was built by a Brazilian operator (Fernando Solver) who uses these names every day in his own work. **You don't need to speak Portuguese to use SolverOS** — they're just names. A translation table is right below. Multi-language support (renaming everything to English, Spanish, etc.) is planned for **v0.7** — see [Roadmap](#roadmap).
 
 ### Translation guide (Portuguese → English)
 
@@ -296,7 +296,7 @@ Stacks add specialized capabilities on top of Core. Core stays generic and stabl
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | The thesis — context + environment, why filesystem-as-agent |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Deep technical dive — every component, how they interlock |
 | [docs/USE_CASES.md](docs/USE_CASES.md) | 10+ real-world examples with copy-paste prompts |
-| [SHOWCASE.md](SHOWCASE.md) | Who's using Solverkitty (add yours via PR) |
+| [SHOWCASE.md](SHOWCASE.md) | Who's using SolverOS (add yours via PR) |
 | [FAQ.md](FAQ.md) | Frequently asked questions |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
@@ -309,7 +309,7 @@ Contributions are welcome — code, docs, skills, stacks, examples, bug reports.
 
 The fastest path to contributing:
 
-1. **Use Solverkitty for a few weeks** — file the rough edges as issues
+1. **Use SolverOS for a few weeks** — file the rough edges as issues
 2. **Add yourself to [SHOWCASE.md](SHOWCASE.md)** with a one-paragraph description of your use case
 3. **Build a skill** for something you do repeatedly — submit it via PR
 4. **Build a stack** for your domain (consulting, research, sales, etc) — opens a new vertical
@@ -321,7 +321,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and [CODE_OF_CONDUCT.md](C
 ## FAQ (short version)
 
 **Q: Does this replace Claude Code's own memory?**
-A: No. It complements it. Claude Code memory is about *you* (preferences, style). Solverkitty is about your *work* (projects, history, decisions).
+A: No. It complements it. Claude Code memory is about *you* (preferences, style). SolverOS is about your *work* (projects, history, decisions).
 
 **Q: Can I use this without Claude Code?**
 A: The files are pure markdown + Python — any LLM that reads filesystem can use them. But the slash commands, hooks, and agents are Claude Code-native. You'd lose ~70% of the value.
@@ -351,6 +351,6 @@ The most valuable contribution is using it and telling people. Stars, issues, PR
 
 <div align="center">
 
-*If Solverkitty saves you an hour, ⭐ star the repo. That's the whole tip jar.*
+*If SolverOS saves you an hour, ⭐ star the repo. That's the whole tip jar.*
 
 </div>

@@ -1,6 +1,6 @@
 ---
 name: 💡 Feature request
-about: Suggest a new capability for Solverkitty
+about: Suggest a new capability for SolverOS
 title: "[FEAT] "
 labels: enhancement
 assignees: ''
@@ -8,7 +8,7 @@ assignees: ''
 
 ## What problem does this solve?
 
-<!-- Be specific. "Make Solverkitty better" doesn't help. "I want to track recurring tasks across projects but the current `objetivos.md` doesn't support frequency" does. -->
+<!-- Be specific. "Make SolverOS better" doesn't help. "I want to track recurring tasks across projects but the current `objetivos.md` doesn't support frequency" does. -->
 
 ## Proposed solution
 
@@ -24,7 +24,7 @@ assignees: ''
 
 ## Would this fit Core or a Stack?
 
-<!-- Solverkitty separates generic capabilities (Core) from specialized ones (Stacks). Where does your idea fit? -->
+<!-- SolverOS separates generic capabilities (Core) from specialized ones (Stacks). Where does your idea fit? -->
 
 - [ ] Core (generic, useful to all users)
 - [ ] Stack: Empresa (enterprise PMO)

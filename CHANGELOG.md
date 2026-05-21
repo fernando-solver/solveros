@@ -1,4 +1,4 @@
-# Changelog — Solverkitty
+# Changelog — SolverOS
 
 Todas as mudanças notáveis deste projeto são documentadas aqui.
 
@@ -32,7 +32,7 @@ Formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e este
 ### Changed
 
 - README structure: added thesis section, personas table, architecture diagram (Mermaid), use cases inline, comparison table with alternatives, FAQ short version
-- `.gitignore` header updated from "Solver Filesystem" to "Solverkitty"
+- `.gitignore` header updated from "Solver Filesystem" to "SolverOS"
 - Added Portuguese-to-English translation guide for all commands and skills in README
 - Documented in `docs/PHILOSOPHY.md` why commands are in Portuguese (authenticity + planned i18n in v0.7)
 - Added v0.7 i18n milestone to roadmap (multi-language support planned)
@@ -41,7 +41,7 @@ Formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e este
 
 ## [0.6.0] — 2026-05-03
 
-**Reposicionamento: Solverkitty pra pessoas.**
+**Reposicionamento: SolverOS pra pessoas.**
 
 A v0.6 é uma reescrita estratégica do produto. Saiu do escopo "PMO empresarial" e voltou pra raiz: ferramenta pra **uma pessoa transformar o próprio computador em ambiente agêntico**.
 
@@ -56,7 +56,7 @@ A v0.6 é uma reescrita estratégica do produto. Saiu do escopo "PMO empresarial
   - `skill_pessoal_05_visao-mes` — HTML consolidado do mês
 - **Comando `/setup-pessoal`** — cadastro inicial em 5 perguntas (você + agente + áreas + objetivo + skill)
 - **Sistema de stacks** (`pmo_stacks.py`) — Core sempre disponível, stacks especializados como adições futuras
-- **Logo Solverkitty** (mascote gato Jorge) em `assets/solverkitty.png`
+- **Logo SolverOS** (mascote gato Jorge) em `assets/solveros.png`
 
 ### Alterado
 

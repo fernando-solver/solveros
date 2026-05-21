@@ -1,4 +1,4 @@
-# Philosophy — The thesis behind Solverkitty
+# Philosophy — The thesis behind SolverOS
 
 > *"The agentic part that survives is not the model. It's the editorial substrate around it."*
 
@@ -75,9 +75,9 @@ Anthropic's Claude Code already provides **excellent environment**:
 
 If you're using Claude Code, you don't need another environment layer. You need **context**.
 
-## What Solverkitty ships
+## What SolverOS ships
 
-Solverkitty is the **context infrastructure** that makes Claude Code's environment shine:
+SolverOS is the **context infrastructure** that makes Claude Code's environment shine:
 
 - **Editorial filesystem** — every project carries its own `CLAUDE.md`, `historico.md`, `objetivos.md` that the agent reads and absorbs as context
 - **Structured log** — every decision, bugfix, discovery is registered in SQLite with a type, date, and project, queryable forever
@@ -89,7 +89,7 @@ Together, this means: when you open Claude Code, your agent already knows where 
 The combination:
 
 ```
-Solverkitty (context)  +  Claude Code (environment)  =  Useful agent
+SolverOS (context)  +  Claude Code (environment)  =  Useful agent
 ```
 
 ---
@@ -114,9 +114,9 @@ When memory is files + SQLite, **everything is observable**. You can audit what 
 
 Your computer already runs on a filesystem. Your projects are folders. Your documents are files. Your tools are programs that read and write files.
 
-Solverkitty doesn't add a new abstraction layer. It uses the substrate that already exists. **Your computer becomes the agent's environment** — not a sandbox, not a container, not a virtual workspace.
+SolverOS doesn't add a new abstraction layer. It uses the substrate that already exists. **Your computer becomes the agent's environment** — not a sandbox, not a container, not a virtual workspace.
 
-This is the deepest design choice in Solverkitty. **Most agent frameworks isolate the agent from your real system.** Solverkitty inverts that — your real system *is* where the agent lives.
+This is the deepest design choice in SolverOS. **Most agent frameworks isolate the agent from your real system.** SolverOS inverts that — your real system *is* where the agent lives.
 
 This scares people used to virtualenvs and Docker. It's also what unlocks the productivity. The agent works on real files, in real folders, with real consequences. No simulation, no replay buffer, no synthetic environment.
 
@@ -130,7 +130,7 @@ For the structured log (`pmo.db`), we use SQLite. Three reasons:
 2. **Zero external dependency.** Works offline, on a plane, without internet, without an API key.
 3. **Auditable.** Open it with any SQL tool. Browse it. Query it. Export it. Backup it with `cp`.
 
-The trade-off: not multi-user. For teams, each person has their own workspace, sync via git. For individuals — which is who Solverkitty is for — SQLite is perfect.
+The trade-off: not multi-user. For teams, each person has their own workspace, sync via git. For individuals — which is who SolverOS is for — SQLite is perfect.
 
 ---
 
@@ -150,7 +150,7 @@ When you have a procedure you do every week ("review my PDFs and find what I sho
 - The skill is testable, version-able, shareable
 - The output format is predictable
 
-Docs are for humans. Skills are for agents. Solverkitty has both — but the procedures live in skills, not docs.
+Docs are for humans. Skills are for agents. SolverOS has both — but the procedures live in skills, not docs.
 
 ---
 
@@ -171,27 +171,27 @@ You stop being the copy-paste between the chat and your filesystem. You become t
 
 Some clarifications, because the framing invites misunderstanding:
 
-### Solverkitty is not AGI infrastructure
+### SolverOS is not AGI infrastructure
 
 It's a productivity tool. A pragmatic one. It doesn't make Claude smarter. It just stops Claude from being amnesiac about your work.
 
-### Solverkitty is not a replacement for Claude memory
+### SolverOS is not a replacement for Claude memory
 
-Claude Code has its own memory layer (in `~/.claude/`). That layer is about *you* — your preferences, your jeito, your style. Solverkitty is about your *work* — projects, decisions, history. They complement each other.
+Claude Code has its own memory layer (in `~/.claude/`). That layer is about *you* — your preferences, your jeito, your style. SolverOS is about your *work* — projects, decisions, history. They complement each other.
 
-### Solverkitty is not for everyone
+### SolverOS is not for everyone
 
-If you have one project and chat with Claude weekly, Solverkitty is overkill. If you operate 5+ projects in parallel and lose context constantly, Solverkitty is a multiplier. Self-select.
+If you have one project and chat with Claude weekly, SolverOS is overkill. If you operate 5+ projects in parallel and lose context constantly, SolverOS is a multiplier. Self-select.
 
-### Solverkitty is not a framework
+### SolverOS is not a framework
 
-Frameworks have classes you inherit, runtimes you boot, lifecycles you respect. Solverkitty has files you organize and SQL you query. The whole thing fits in your head in 30 minutes.
+Frameworks have classes you inherit, runtimes you boot, lifecycles you respect. SolverOS has files you organize and SQL you query. The whole thing fits in your head in 30 minutes.
 
 ---
 
 ## Inspirations
 
-The thinking behind Solverkitty draws on:
+The thinking behind SolverOS draws on:
 
 - **[Building a Second Brain (Tiago Forte)](https://www.buildingasecondbrain.com/)** — for the editorial approach to personal knowledge
 - **[Andy Matuschak's notes](https://notes.andymatuschak.org/)** — for atomic notes and tools-for-thought
@@ -207,7 +207,7 @@ If you're building agent infrastructure, study these too.
 
 This is asked enough to deserve an answer in the philosophy doc.
 
-Solverkitty was built by a Brazilian operator (Fernando Solver) over 90+ days of running Claude Code on his own work. The commands and skills carry the names he naturally uses — `/comecar` instead of `/start`, `revisar-semana` instead of `weekly-review`.
+SolverOS was built by a Brazilian operator (Fernando Solver) over 90+ days of running Claude Code on his own work. The commands and skills carry the names he naturally uses — `/comecar` instead of `/start`, `revisar-semana` instead of `weekly-review`.
 
 Three reasons we kept it that way:
 
@@ -219,13 +219,13 @@ Three reasons we kept it that way:
 
 That said: **multi-language support is planned for v0.7** — first-class English, Spanish, and other locale stacks where every command, skill, and message is available natively in your language. Until then, the names are Portuguese, and you have a translation table in the README.
 
-If you can read this paragraph, you can use Solverkitty. The Portuguese is decoration.
+If you can read this paragraph, you can use SolverOS. The Portuguese is decoration.
 
 ---
 
 ## Where this goes next
 
-Solverkitty Core is the foundation. The future is **stacks** — domain-specific extensions that build on top:
+SolverOS Core is the foundation. The future is **stacks** — domain-specific extensions that build on top:
 
 - **Stack Empresa** — generic enterprise PMO
 - **Stack Ecommerce** — for Brazilian e-commerce operators
@@ -243,7 +243,7 @@ This document defends a thesis. The thesis might be wrong in 18 months — the f
 
 But the right way to test it is to **use it**. Build with it. Push it. Find where it breaks.
 
-If you find Solverkitty useful, share it. If you find it broken, file an issue. If you build something on top of it, ship a stack. That's how a thesis becomes a tool.
+If you find SolverOS useful, share it. If you find it broken, file an issue. If you build something on top of it, ship a stack. That's how a thesis becomes a tool.
 
 > *Crie um agente. Em uma pasta. Em menos de 1 minuto.*
 > *Build an agent. In a folder. In under a minute.*

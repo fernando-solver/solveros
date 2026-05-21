@@ -1,6 +1,6 @@
 ---
 name: skill_pessoal_04_arquivar-pasta
-description: Move pasta inativa pra _archive/<ano>Q<n>/ seguindo o padrao Solverkitty, sem perder historico
+description: Move pasta inativa pra _archive/<ano>Q<n>/ seguindo o padrao SolverOS, sem perder historico
 trigger: O usuario pede "arquiva essa pasta", "tira essa daqui" ou voce identifica pasta sem mudancas ha 90+ dias
 version: 1
 last_updated: 2026-05-03

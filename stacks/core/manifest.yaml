@@ -1,7 +1,7 @@
-# Solverkitty Core
+# SolverOS Core
 stack: core
 versao: 0.6
-descricao: Núcleo genérico do Solverkitty. Estrutura mínima sem opinião
+descricao: Núcleo genérico do SolverOS. Estrutura mínima sem opinião
   sobre setor ou tamanho. Serve qualquer pessoa — você customiza por cima
   pra projetos pessoais, profissionais, estudos ou negócio próprio.
 

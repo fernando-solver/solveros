@@ -6,7 +6,7 @@
 
 <div align="center">
 
-<img src="assets/solverkitty.png" alt="Solverkitty" width="520" />
+<img src="assets/solveros.png" alt="SolverOS" width="520" />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Versão](https://img.shields.io/badge/versão-0.6-blue.svg)](CHANGELOG.md)
@@ -19,9 +19,9 @@
 
 ---
 
-## O que é Solverkitty?
+## O que é SolverOS?
 
-Solverkitty é um kit de arquivos + scripts Python que transforma seu Claude Code num **parceiro de trabalho contínuo**. Você cria a pasta, instala, e seu agente passa a:
+SolverOS é um kit de arquivos + scripts Python que transforma seu Claude Code num **parceiro de trabalho contínuo**. Você cria a pasta, instala, e seu agente passa a:
 
 - **Lembrar do que você faz**, mês a mês (SQLite local — nada vai pra nuvem)
 - **Organizar seus projetos** automaticamente (filesystem editorial)
@@ -48,9 +48,9 @@ Sem ambiente, ele sabe mas não consegue executar.
 
 **Quase nenhum entrega contexto bem.** Eles assumem que você vai construir contexto via prompt engineering ou injeção dinâmica.
 
-**Solverkitty é o oposto.** Ele não te dá ambiente novo — Claude Code já dá. Ele te dá a **infraestrutura de contexto**: filesystem editorial, log auditável, skills procedurais, memória estruturada.
+**SolverOS é o oposto.** Ele não te dá ambiente novo — Claude Code já dá. Ele te dá a **infraestrutura de contexto**: filesystem editorial, log auditável, skills procedurais, memória estruturada.
 
-> **Solverkitty é o filesystem que vira contexto. Claude Code é o motor que vira ambiente. Junto, vira agente.**
+> **SolverOS é o filesystem que vira contexto. Claude Code é o motor que vira ambiente. Junto, vira agente.**
 
 📖 *Quer a filosofia completa? Veja [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md).*
 
@@ -69,15 +69,15 @@ Pra quem trabalha com a cabeça e perde contexto entre projetos.
 | 🎓 **Estudante / autodidata** | Acompanha leituras, progresso de estudo, projetos, constrói base de conhecimento pessoal |
 | 🏪 **Empresário pequeno** | Gerencia o lado pessoal do negócio sem misturar com ferramentas da empresa |
 
-Se você já abriu um projeto depois de 3 semanas e pensou *"onde eu estava?"* — Solverkitty é pra você.
+Se você já abriu um projeto depois de 3 semanas e pensou *"onde eu estava?"* — SolverOS é pra você.
 
 ---
 
 ## Quick start (1 minuto)
 
 ```bash
-git clone https://github.com/fernando-solver/solverkitty.git
-cd solverkitty
+git clone https://github.com/fernando-solver/solveros.git
+cd solveros
 python instalar.py
 claude
 ```
@@ -176,9 +176,9 @@ Coisas reais que você pode fazer hoje, copy-paste:
 
 ---
 
-## Solverkitty vs alternativas
+## SolverOS vs alternativas
 
-| | Memória do Claude | claude-mem | LangChain / CrewAI | Notion / Obsidian | **Solverkitty** |
+| | Memória do Claude | claude-mem | LangChain / CrewAI | Notion / Obsidian | **SolverOS** |
 |---|---|---|---|---|---|
 | **O que armazena** | Suas preferências | Contexto da conversa | — (você constrói) | Notas + databases | Projetos, decisões, atividades, objetivos |
 | **Estruturado?** | Não (texto livre) | Não (memória conversacional) | Se você construir | Tipo database | Sim (SQLite + arquivos canônicos) |
@@ -190,9 +190,9 @@ Coisas reais que você pode fazer hoje, copy-paste:
 
 **A leitura honesta:** essas ferramentas não são concorrentes. São camadas diferentes.
 
-- **claude-mem** mantém sua *conversa* viva entre sessões. Solverkitty mantém seu *trabalho* vivo ao longo de meses.
-- **LangChain/CrewAI** são pra construir produtos de agente pra outros. Solverkitty é pra rodar seu próprio trabalho.
-- **Notion/Obsidian** são notas passivas. Solverkitty é sistema ativo que executa rotinas.
+- **claude-mem** mantém sua *conversa* viva entre sessões. SolverOS mantém seu *trabalho* vivo ao longo de meses.
+- **LangChain/CrewAI** são pra construir produtos de agente pra outros. SolverOS é pra rodar seu próprio trabalho.
+- **Notion/Obsidian** são notas passivas. SolverOS é sistema ativo que executa rotinas.
 
 Você pode — e deveria — usar várias delas juntas.
 
@@ -269,7 +269,7 @@ Você pode — e deveria — usar várias delas juntas.
 Contribuições são bem-vindas — código, docs, skills, stacks, exemplos.
 
 Caminho mais rápido:
-1. **Use Solverkitty por algumas semanas** — registre as arestas como issues
+1. **Use SolverOS por algumas semanas** — registre as arestas como issues
 2. **Adicione você em [SHOWCASE.md](SHOWCASE.md)**
 3. **Construa uma skill** pra algo que você faz — submete via PR
 4. **Construa um stack** pro seu domínio
@@ -291,6 +291,6 @@ Pra acompanhar: [@fernandosolver](https://instagram.com/fernandosolver) · [fern
 
 <div align="center">
 
-*Se Solverkitty te economizar 1 hora, ⭐ star o repo. Essa é a caixinha inteira.*
+*Se SolverOS te economizar 1 hora, ⭐ star o repo. Essa é a caixinha inteira.*
 
 </div>

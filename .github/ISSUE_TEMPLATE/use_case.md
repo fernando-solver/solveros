@@ -1,6 +1,6 @@
 ---
 name: 🎯 Share a use case
-about: Tell us how you're using Solverkitty (helps others see fit)
+about: Tell us how you're using SolverOS (helps others see fit)
 title: "[USE CASE] "
 labels: showcase
 assignees: ''
@@ -14,7 +14,7 @@ assignees: ''
 - "Independent consultant in B2B sales"
 -->
 
-## What you're using Solverkitty for
+## What you're using SolverOS for
 
 <!-- Describe the work the agent helps you with. -->
 
@@ -30,7 +30,7 @@ assignees: ''
 
 ## What's missing or rough
 
-<!-- 1-3 things you wish Solverkitty did better. (Bug? File a bug. Feature? File a feature. But pain points are gold for the maintainers.) -->
+<!-- 1-3 things you wish SolverOS did better. (Bug? File a bug. Feature? File a feature. But pain points are gold for the maintainers.) -->
 
 ## Time saved (estimate)
 

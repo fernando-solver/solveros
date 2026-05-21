@@ -1,4 +1,4 @@
-# Pasta de projeto (Solverkitty core)
+# Pasta de projeto (SolverOS core)
 
 Voce esta dentro de uma pasta de projeto. Esta pasta organiza tudo que
 pertence a um trabalho, area de estudo, processo recorrente ou iniciativa

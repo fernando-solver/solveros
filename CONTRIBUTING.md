@@ -1,12 +1,12 @@
-# Contributing to Solverkitty
+# Contributing to SolverOS
 
-Thanks for considering contributing! Solverkitty grows when people use it for real work and share what they learned.
+Thanks for considering contributing! SolverOS grows when people use it for real work and share what they learned.
 
 ## TL;DR
 
 The most valuable contributions, in order:
 
-1. **Use Solverkitty for real work, file the rough edges as issues.**
+1. **Use SolverOS for real work, file the rough edges as issues.**
 2. **Add your use case to [SHOWCASE.md](SHOWCASE.md)** — it helps others see fit.
 3. **Submit a skill** for something you automated.
 4. **Submit a stack** for your domain (consulting, research, sales, etc).
@@ -32,7 +32,7 @@ Use the [feature request issue template](.github/ISSUE_TEMPLATE/feature_request.
 
 ### 🎨 New skills
 
-Skills are the easiest way to extend Solverkitty. To submit one:
+Skills are the easiest way to extend SolverOS. To submit one:
 
 1. Read existing skills in `skills/` for the pattern
 2. Use the frontmatter format:
@@ -148,7 +148,7 @@ and the previous week's review output.
 
 ## Questions?
 
-Open a [Discussion](https://github.com/fernando-solver/solverkitty/discussions) or DM [@fernandosolver](https://instagram.com/fernandosolver) on Instagram.
+Open a [Discussion](https://github.com/fernando-solver/solveros/discussions) or DM [@fernandosolver](https://instagram.com/fernandosolver) on Instagram.
 
 ## Recognition
 

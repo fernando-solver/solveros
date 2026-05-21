@@ -147,7 +147,7 @@ def init_db():
         )
     """)
 
-    # -- Clientes (v0.5 — empresas cadastradas no Solverkitty) --
+    # -- Clientes (v0.5 — empresas cadastradas no SolverOS) --
     c.execute("""
         CREATE TABLE IF NOT EXISTS clientes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -924,7 +924,7 @@ def shares_log(project=None, limit=50):
 
 
 # ============================================================
-# CLIENTES (v0.5 — empresas cadastradas no Solverkitty)
+# CLIENTES (v0.5 — empresas cadastradas no SolverOS)
 # ============================================================
 
 def cliente_create(slug, nome, segmento=None, ticket_medio=None, mrr=None,

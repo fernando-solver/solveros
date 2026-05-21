@@ -1,4 +1,4 @@
-"""SessionStart hook do Solverkitty.
+"""SessionStart hook do SolverOS.
 
 Roda automaticamente quando Claude Code abre sessao no workspace.
 Imprime contexto do trabalho em curso pra stdout (Claude Code agrega
@@ -28,7 +28,7 @@ def _safe_session_start():
         from pmo_db import session_start
         return session_start("auto via SessionStart hook")
     except Exception as e:
-        _print(f"[Solverkitty hook] session_start falhou: {e}", file=sys.stderr)
+        _print(f"[SolverOS hook] session_start falhou: {e}", file=sys.stderr)
         return None
 
 
@@ -54,7 +54,7 @@ def _load_objective():
             _print(f"\n## Objetivos ativos: {len(objetivos)}")
             _print("(nenhum marcado como principal — defina um com `meta_30_dias`)")
     except Exception as e:
-        _print(f"[Solverkitty hook] _load_objective falhou: {e}", file=sys.stderr)
+        _print(f"[SolverOS hook] _load_objective falhou: {e}", file=sys.stderr)
 
 
 def _load_recent_activity():
@@ -75,7 +75,7 @@ def _load_recent_activity():
             for date_, proj, type_, summary in rows:
                 _print(f"- {date_} [{type_}] {proj}: {summary[:80]}")
     except Exception as e:
-        _print(f"[Solverkitty hook] _load_recent_activity falhou: {e}", file=sys.stderr)
+        _print(f"[SolverOS hook] _load_recent_activity falhou: {e}", file=sys.stderr)
 
 
 def main():
@@ -83,7 +83,7 @@ def main():
         sid = _safe_session_start()
 
         _print(
-            f"# Solverkitty | sessao {sid or '?'} | "
+            f"# SolverOS | sessao {sid or '?'} | "
             f"{datetime.now().strftime('%Y-%m-%d %H:%M')}"
         )
 
@@ -104,7 +104,7 @@ def main():
 
     except Exception:
         # Falha silenciosa — hook nunca trava o boot.
-        _print("[Solverkitty hook] erro nao tratado:", file=sys.stderr)
+        _print("[SolverOS hook] erro nao tratado:", file=sys.stderr)
         _print(traceback.format_exc(), file=sys.stderr)
 
 

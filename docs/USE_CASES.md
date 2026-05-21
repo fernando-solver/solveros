@@ -1,6 +1,6 @@
-# Use cases — Solverkitty in real work
+# Use cases — SolverOS in real work
 
-Below are concrete patterns of how people use Solverkitty across different fields.
+Below are concrete patterns of how people use SolverOS across different fields.
 Each pattern includes setup, key skills, example prompts, and what you should expect.
 
 > 📌 **Have a use case to add?** Open a PR with your story — see [SHOWCASE.md](../SHOWCASE.md).
@@ -269,10 +269,10 @@ When stuck, run `/proximo-passo`. The agent reads your objective, your history, 
 
 To be honest:
 
-- **One-off tasks.** If you don't have ongoing work, Solverkitty is overkill. Use vanilla Claude Code.
-- **Highly collaborative work.** Solverkitty is single-user. Teams need different tools (or a fork of this thinking).
+- **One-off tasks.** If you don't have ongoing work, SolverOS is overkill. Use vanilla Claude Code.
+- **Highly collaborative work.** SolverOS is single-user. Teams need different tools (or a fork of this thinking).
 - **Work where everything fits in your head.** If you have 1 project and 1 day at a time, you don't need infrastructure.
-- **Pure brainstorming.** Solverkitty shines on continuous structured work, not exploratory ideation.
+- **Pure brainstorming.** SolverOS shines on continuous structured work, not exploratory ideation.
 
 If you fit those, save your time and don't install. We're not selling. We're building for who needs this.
 
