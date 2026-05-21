@@ -51,7 +51,7 @@ Valide:
 - Se der mais de 5: aceite, mas avise "começa pesado — sugiro 3-4 pra
   testar; sempre dá pra adicionar depois".
 
-→ cria 1 pasta por área no formato `slug-da-area/` na raiz do workspace,
+→ cria 1 pasta por área no formato `_slug-da-area/` (prefixo `_` pra subir na ordenação) na raiz do workspace,
 cada uma com `_template/` aplicado (CLAUDE.md, inbox/, saidas/, _archive/).
 
 ## Pergunta 4 — objetivo principal

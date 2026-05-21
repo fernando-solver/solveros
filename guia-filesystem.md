@@ -222,27 +222,28 @@ frustacao.                               foco no que importa.
 
 ## A Pasta: Anatomia de um Projeto
 
-Cada projeto e uma pasta no seu computador. O nome segue um padrao rigido:
+Cada projeto e uma pasta no seu computador, dentro da pasta do departamento. O caminho segue um padrao rigido:
 
 ```
-YYYYMM_categoria_nome-do-projeto
+_departamento/AAAAMM_empresa_nome-do-projeto
 ```
 
-- `YYYYMM` = ano e mes de criacao (ex: 202604)
-- `categoria` = sigla do departamento (ex: analise, mkt, cad, oper)
+- `_departamento` = pasta de topo por area funcional, com prefixo `_` (ex: `_financeiro`, `_credito`, `_fiscal`). O `_` mantem os departamentos no topo da listagem.
+- `AAAAMM` = ano e mes de criacao (ex: 202605)
+- `empresa` = empresa do grupo a que o projeto pertence (ex: jandaia)
 - `nome-do-projeto` = descricao curta com hifens, minuscula
 
 Exemplos:
-- `202604_analise_vendas-por-regiao`
-- `202603_mkt_recuperacao-carrinho`
-- `202601_cad_correcao-dimensoes`
+- `_financeiro/202605_jandaia_conciliacao-bancaria`
+- `_credito/202605_jandaia_analise-inadimplencia`
+- `_fiscal/202605_empresa-b_apuracao-icms`
 
-Esse padrao nao e estetica. E funcionalidade. Quando voce tem 60 projetos na pasta, a ordenacao alfabetica agrupa por data e categoria automaticamente. Voce bate o olho e sabe: quando foi criado, de que area e, e o que faz.
+Esse padrao nao e estetica. E funcionalidade. Alem disso, `empresa` e `departamento` viram campos no banco (pmo.db) — entao da pra cruzar "tudo da empresa X" ou "todas as conciliacoes do grupo" por query. A arvore de pastas e pra leitura humana; o agente raciocina pelo banco.
 
 Estrutura interna:
 
 ```
-202604_analise_vendas-por-regiao/
+_financeiro/202605_jandaia_conciliacao-bancaria/
   CLAUDE.md              -- briefing (obrigatorio)
   historico.md           -- diario (obrigatorio)
   proximos-passos.md     -- retomada (obrigatorio)

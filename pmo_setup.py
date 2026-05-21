@@ -130,34 +130,50 @@ def setup_workspace(nome_agente, papel_agente, nome_usuario, categorias_custom=N
     return True
 
 
-def nova_pasta(nome, categoria, descricao, ano_mes=None, frequencia=None, missao=None):
+def _slug(texto):
+    """Normaliza para slug de pasta: minusculo, hifens, sem acento/espaco."""
+    import unicodedata
+    t = unicodedata.normalize('NFKD', str(texto)).encode('ascii', 'ignore').decode('ascii')
+    t = re.sub(r'[^a-z0-9]+', '-', t.lower().strip()).strip('-')
+    return t or 'sem-nome'
+
+
+def nova_pasta(nome, departamento, empresa, descricao, ano_mes=None, frequencia=None, missao=None):
     """
-    Cria nova pasta de projeto com estrutura padrao de agente.
+    Cria nova pasta de projeto na estrutura: _<departamento>/<AAAAMM>_<empresa>_<nome>/
+
+    O departamento vira a pasta de topo (prefixo '_' para subir na ordenacao).
+    A empresa entra no nome do projeto. empresa e departamento sao gravados como
+    campos no banco (pmo.db) para permitir cruzamentos (ex: "tudo da empresa X",
+    "todas as conciliacoes do grupo") independente da arvore de pastas.
 
     Args:
-        nome: nome do projeto (ex: 'digest-diario')
-        categoria: sigla da categoria (ex: 'pmo')
+        nome: nome do projeto (ex: 'conciliacao-bancaria')
+        departamento: area funcional (ex: 'financeiro', 'credito', 'fiscal')
+        empresa: empresa do grupo (ex: 'jandaia')
         descricao: descricao para o glossario
-        ano_mes: YYYYMM (default: mes atual)
-        frequencia: frequencia de execucao (ex: 'Diario 5h30', 'Semanal seg 7h', 'Sob demanda')
-        missao: frase curta da missao do agente (default: usa descricao)
+        ano_mes: AAAAMM (default: mes atual)
+        frequencia: frequencia de execucao (ex: 'Mensal', 'Sob demanda')
+        missao: frase curta da missao (default: usa descricao)
 
     Returns:
-        folder_name: nome da pasta criada
+        folder_rel: caminho relativo da pasta criada (_dep/AAAAMM_empresa_nome)
     """
     init_db()
-
-    if categoria not in CATEGORIAS:
-        print(f"[ERRO] Categoria '{categoria}' invalida. Validas: {', '.join(CATEGORIAS.keys())}")
-        return None
 
     if ano_mes is None:
         ano_mes = datetime.now().strftime('%Y%m')
 
-    folder_name = f"{ano_mes}_{categoria}_{nome}"
-    folder_path = os.path.join(BASE_DIR, folder_name)
+    dep_slug = _slug(departamento)
+    emp_slug = _slug(empresa)
+    nome_slug = _slug(nome)
 
-    # Cria pasta raiz
+    dept_folder = f"_{dep_slug}"
+    folder_name = f"{ano_mes}_{emp_slug}_{nome_slug}"   # nome da pasta do projeto
+    folder_rel = f"{dept_folder}/{folder_name}"          # id canonico (relativo a raiz)
+    folder_path = os.path.join(BASE_DIR, dept_folder, folder_name)
+
+    # Cria pasta de departamento (topo, prefixo _) + pasta do projeto
     os.makedirs(folder_path, exist_ok=True)
 
     # Cria estrutura de pastas padrao
@@ -176,7 +192,7 @@ def nova_pasta(nome, categoria, descricao, ano_mes=None, frequencia=None, missao
 
     # Cria CLAUDE.md
     titulo = nome.replace('-', ' ').title()
-    bloco_registro = REGISTRO_BLOCO.replace('{project_name}', folder_name).replace('{workspace_root}', BASE_DIR.replace('\\', '\\\\'))
+    bloco_registro = REGISTRO_BLOCO.replace('{project_name}', folder_rel).replace('{workspace_root}', BASE_DIR.replace('\\', '\\\\'))
     freq_str = frequencia or 'Sob demanda'
     missao_str = missao or descricao
 
@@ -347,7 +363,7 @@ Cada execute.md deve ser autossuficiente.
 
     # Cria config.json
     config = {
-        'nome': folder_name,
+        'nome': folder_rel,
         'missao': missao_str,
         'frequencia': freq_str,
         'ativo': True,
@@ -368,17 +384,17 @@ Cada execute.md deve ser autossuficiente.
     with open(os.path.join(folder_path, 'historico.md'), 'w', encoding='utf-8') as f:
         f.write(historico_md)
 
-    # Registra no banco
-    upsert_project(folder_name, descricao, 'Ativo')
-    log_activity(hoje, folder_name, 'feature', f'Projeto criado: {descricao}')
+    # Registra no banco (folder_rel = id canonico; empresa/departamento = campos queryaveis)
+    upsert_project(folder_rel, descricao, 'Ativo', empresa=emp_slug, departamento=dep_slug)
+    log_activity(hoje, folder_rel, 'feature', f'Projeto criado: {descricao}')
 
     # Adiciona ao GLOSSARIO.md
     glossario_path = os.path.join(BASE_DIR, 'GLOSSARIO.md')
     with open(glossario_path, 'r', encoding='utf-8') as f:
         glossario = f.read()
 
-    nova_linha = f"| `{folder_name}` | {descricao} | Ativo |"
-    if folder_name not in glossario:
+    nova_linha = f"| `{folder_rel}` | {descricao} | Ativo |"
+    if folder_rel not in glossario:
         glossario = glossario.rstrip() + '\n' + nova_linha + '\n'
         with open(glossario_path, 'w', encoding='utf-8') as f:
             f.write(glossario)
@@ -389,14 +405,14 @@ Cada execute.md deve ser autossuficiente.
         shutil.copy2(env_src, os.path.join(folder_path, '.env'))
         print(f"[OK] .env copiado da raiz")
 
-    print(f"[OK] Pasta criada: {folder_name}")
+    print(f"[OK] Pasta criada: {folder_rel}")
     print(f"[OK] Estrutura padrao: 01_input/ 02_output/ 03_analisar/ 04_processar/ dados/ scripts/ saidas/")
     print(f"[OK] CLAUDE.md com missao e estrutura de agente")
     print(f"[OK] config.json inicializado")
     print(f"[OK] historico.md inicializado")
     print(f"[OK] Projeto registrado no banco (projects + activities)")
     print(f"[OK] GLOSSARIO.md atualizado")
-    return folder_name
+    return folder_rel
 
 
 def injetar_registro_em_projetos():
@@ -598,4 +614,4 @@ if __name__ == '__main__':
         print("Uso:")
         print("  python pmo_setup.py injetar                    # Adiciona bloco em CLAUDE.md")
         print("  python pmo_setup.py cliente <slug> [nome]      # Cria pasta de cliente (v0.5)")
-        print("  python -c \"from pmo_setup import nova_pasta; nova_pasta('nome', 'categoria', 'descricao')\"")
+        print("  python -c \"from pmo_setup import nova_pasta; nova_pasta('nome-projeto', 'departamento', 'empresa', 'descricao')\"")

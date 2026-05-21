@@ -73,10 +73,19 @@ def init_db():
             folder TEXT UNIQUE NOT NULL,
             description TEXT,
             status TEXT DEFAULT 'Ativo',
+            empresa TEXT,
+            departamento TEXT,
             created_at TEXT DEFAULT (datetime('now','localtime')),
             last_activity TEXT
         )
     """)
+
+    # Migracao idempotente: garante empresa/departamento em projects (DBs criados antes da v0.7)
+    _proj_cols = [r[1] for r in c.execute("PRAGMA table_info(projects)").fetchall()]
+    if 'empresa' not in _proj_cols:
+        c.execute("ALTER TABLE projects ADD COLUMN empresa TEXT")
+    if 'departamento' not in _proj_cols:
+        c.execute("ALTER TABLE projects ADD COLUMN departamento TEXT")
 
     # -- Objetivos estrategicos --
     c.execute("""
@@ -524,8 +533,8 @@ def list_pending(project=None, resolved=False):
 # PROJETOS
 # ============================================================
 
-def upsert_project(folder, description=None, status=None):
-    """Insere ou atualiza projeto."""
+def upsert_project(folder, description=None, status=None, empresa=None, departamento=None):
+    """Insere ou atualiza projeto. empresa/departamento sao campos queryaveis."""
     conn = get_conn()
     existing = conn.execute("SELECT * FROM projects WHERE folder=?", (folder,)).fetchone()
     if existing:
@@ -534,13 +543,17 @@ def upsert_project(folder, description=None, status=None):
             updates.append("description=?"); params.append(description)
         if status:
             updates.append("status=?"); params.append(status)
+        if empresa:
+            updates.append("empresa=?"); params.append(empresa)
+        if departamento:
+            updates.append("departamento=?"); params.append(departamento)
         if updates:
             params.append(folder)
             conn.execute(f"UPDATE projects SET {','.join(updates)} WHERE folder=?", params)
     else:
         conn.execute(
-            "INSERT INTO projects (folder, description, status) VALUES (?,?,?)",
-            (folder, description, status or 'Ativo')
+            "INSERT INTO projects (folder, description, status, empresa, departamento) VALUES (?,?,?,?,?)",
+            (folder, description, status or 'Ativo', empresa, departamento)
         )
     conn.commit()
     conn.close()

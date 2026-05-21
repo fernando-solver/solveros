@@ -104,19 +104,20 @@ Se retornar dados sem erro, a instalacao esta completa.
 
 ### Convencao de nome
 
-Formato obrigatorio: `YYYYMM_categoria_nome-projeto`
+Formato obrigatorio: `_departamento/AAAAMM_empresa_nome-projeto`
 
-- YYYYMM = ano e mes de criacao (ex: 202604)
-- categoria = sigla do departamento (ver tabela abaixo)
+- `_departamento` = pasta de topo por area funcional, prefixo `_` (ex: `_financeiro`, `_credito`)
+- AAAAMM = ano e mes de criacao (ex: 202605)
+- empresa = empresa do grupo (ex: jandaia)
 - nome-projeto = descricao curta com hifens, sempre minusculo
 
-Exemplo: `202604_analise_vendas-por-regiao`
+Exemplo: `_financeiro/202605_jandaia_conciliacao-bancaria`
 
-Excecao: a pasta PMO consolidada usa prefixo `000000` para ficar sempre no topo da listagem alfabetica.
+`empresa` e `departamento` tambem sao gravados como campos no banco (pmo.db) para permitir cruzamentos por query. Crie sempre via `/nova-pasta` (nunca pasta na mao). Excecao: a pasta PMO consolidada usa prefixo `000000` para ficar no topo.
 
-### Categorias por departamento
+### Departamentos (exemplos por contexto de negocio)
 
-As categorias sao personalizaveis. Exemplos por area:
+Os departamentos sao personalizaveis (viram a pasta de topo `_departamento`). Exemplos por contexto:
 
 **Ecommerce:**
 

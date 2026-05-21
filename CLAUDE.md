@@ -40,6 +40,21 @@ Cada pasta de área (criada via `/setup-pessoal` ou `/nova-pasta`) tem o templat
 └── _archive/             <- versões obsoletas
 ```
 
+## Criação de projetos (convenção obrigatória)
+
+Projetos NUNCA são criados na mão (mkdir/Write). SEMPRE use `/nova-pasta` (que chama `pmo_setup.nova_pasta`) — criar pasta manualmente quebra a organização e o registro no banco.
+
+Formato canônico: **`_<departamento>/<AAAAMM>_<empresa>_<nome-projeto>/`**
+
+- `_<departamento>` — pasta de topo por área funcional (ex: `_financeiro`, `_credito`, `_fiscal`). O prefixo `_` mantém os departamentos no topo da listagem.
+- `<AAAAMM>` — ano e mês de criação (ex: 202605).
+- `<empresa>` — empresa do grupo a que o projeto pertence (ex: `jandaia`).
+- `<nome-projeto>` — slug curto, minúsculas com hifens.
+
+Exemplo: `_financeiro/202605_jandaia_conciliacao-bancaria/`
+
+`empresa` e `departamento` são gravados como **campos no banco** (`pmo.db`). Isso permite cruzar "tudo da empresa X" ou "todas as conciliações do grupo" por query — a árvore de pastas é só pra leitura humana, o agente raciocina pelo banco.
+
 ## Ao iniciar qualquer sessão
 
 O hook `pmo_hooks/session_start.py` já roda automaticamente no boot e injeta:
@@ -97,7 +112,7 @@ Stacks futuros: Empresa, Ecommerce, Consultor, Indústria, Serviços.
 - **Nunca colete dados sensíveis** sem necessidade clara: CPF, CNPJ, senhas, dados de terceiros.
 - **Nunca prometa entregáveis** ao usuário sem ter base concreta. Configurar workspace não gera relatório automaticamente.
 - **Confirme antes de operações destrutivas**: mover arquivos pra `_archive/`, apagar dados, sobrescrever entregáveis.
-- **Pessoa, não empresa.** Vocabulário: "você", "sua área", "seu projeto", "seu objetivo". Nunca: "marca ativa", "departamento", "negócio", "cliente".
+- **Foco no trabalho, sem jargão de agência.** Vocabulário natural: "departamento", "empresa", "projeto", "objetivo" (departamento e empresa estruturam as pastas — ver "Criação de projetos"). Evite jargão de marketing: "marca ativa", "lead".
 
 ## Console Windows
 
